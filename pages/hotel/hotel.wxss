@@ -1,0 +1,62 @@
+/* pages/hotel/hotel.wxss */
+/*页面  */
+page{
+  /*Box model  */
+  width: 100%;
+  height: 100%;
+
+  /*Visual  */
+  background-color: #f6f8f9;
+}
+
+
+
+/*指南链接跳转  */
+.link{
+  /*Box model  */
+  margin: 15rpx;
+  border-radius: 10rpx;
+
+  /*Visual  */
+  background-color: #fff;  
+}
+
+/*指南标题  */
+.link-title{
+  /*Box model */
+  padding: 20rpx;
+  border-bottom: 1px #dcdcdc solid;
+  display: flex;
+  
+  /*Typographic */
+  font-size: 12pt;
+  flex-direction: row;
+  align-items: center;
+
+  /*Visual */
+  color: #808080; 
+}
+
+
+
+/*标题装饰  */
+.link-title-line{
+  /*Box model  */
+  border-color:#ffd700;
+  height:20rpx;
+  width:0;
+  border-style:solid;
+  margin-right: 20rpx;
+}
+
+
+
+/*链接介绍  */
+.link-text{
+  /*Box model */
+  padding: 30rpx;
+  /*Typographic */
+  font-size: 12pt;
+  /*Visual */ 
+  color: #d3d3d3;  
+}

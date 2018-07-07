@@ -1,0 +1,160 @@
+<!--index.wxml-->
+
+<!--首页头部（标题、轮播图以及广告）  -->
+<view class="title">{{hotel.name}}  {{hotel.room}}</view>
+<index-slider slider="{{slider}}" />
+<view class="ad" hidden="{{isShowAd}}">
+  公告：欢迎入住{{hotel.name}}，祝您入住愉快
+  <icon type="cancel" class="ad-icon" color="#f4a460" bindtap="closeAd"></icon>
+</view>
+
+
+<!--首页主要功能页导航栏  -->
+<view class="banner">
+  <navigator class="banner-item" url="../shop/shop" >
+    <icon>
+      <image src="../../images/shop.png"></image>
+    </icon> 
+    <text>便利店</text>
+  </navigator>
+  <navigator class="banner-item" url="../dinner/dinner" >
+    <icon>
+      <image src="../../images/eating.png"></image>
+    </icon>
+    <text>送餐服务</text>
+  </navigator>
+  <navigator class="banner-item" url="../bill/bill">
+    <icon>
+      <image src="../../images/bill.png"></image>    
+    </icon>
+    <text>开票</text>
+  </navigator>
+  <navigator class="banner-item" url="../rebbag/rebbag">
+    <icon>
+      <image src="../../images/rebbag.png"></image>
+    </icon>
+    <text>领红包</text>
+  </navigator>
+  <navigator class="banner-item" url="../hotel/hotel">
+    <icon>
+      <image src="../../images/hotel-note.png"></image>
+    </icon>
+    <text>酒店指南</text>
+  </navigator>
+  <navigator class="banner-item"  url="../travel/travel">
+    <icon>
+      <image src="../../images/travel.png"></image>
+    </icon>
+    <text>旅游推荐</text>
+  </navigator>
+  <!-- <navigator class="banner-item" url="../talkingroom/talkingroom">
+    <image src="../../images/chat.png"></image>
+    <text>聊天室</text>
+  </navigator> -->
+</view>
+
+<!--服务模块  -->
+<view class="service">
+  <view class="service-type">
+    <view class="service-item {{serviceType == '0'? 'active' : ''}}" data-idx="0" bindtap="switchItem">
+      <image src="../../images/phone.png"></image>
+      <text>电话呼叫</text>
+    </view>
+    <view class="service-item {{serviceType == '1'? 'active' : ''}}" data-idx="1" bindtap="switchItem">
+      <image src="../../images/discuss.png"></image>
+      <text>吐槽投诉</text>
+    </view>
+    <view class="service-item {{serviceType == '2'? 'active' : ''}}" data-idx="2" bindtap="switchItem">
+      <image src="../../images/wifi.png"></image>
+      <text>WIFI</text>
+    </view>
+    <view class="service-item {{serviceType == '3'? 'active' : ''}}" data-idx="3" bindtap="switchItem">
+      <image src="../../images/usb.png"></image>
+      <text>物品租借</text>
+    </view>
+    <view class="service-item {{serviceType == '4'? 'active' : ''}}" data-idx="4" bindtap="switchItem">
+      <image src="../../images/broom.png"></image>
+      <text>房间打扫</text>
+    </view>
+  </view>
+  <view class="service-detail" hidden="{{serviceType != '0'}}">
+    <view class="phone" bindtap="phoneCall">总台</view>
+  </view>
+  <view class="service-detail" hidden="{{serviceType != '1'}}">
+    <view class="complain">
+      <view class="manager">
+        <image src="../../images/manager.png"></image>
+        <text>宾客您好！我是本店经理，住店过程中遇到任何问题，都可以反馈给我，我会帮您解决，希望您住店愉快！</text>
+      </view>
+      <view class="tab-group">
+        <block wx:for="{{complain_tabs}}" wx:key="{{index}}" >
+          <view class="tab {{item.selected ? 'selected' : ''}}" data-idx="{{index}}" bindtap="selectComplain">{{item.text}}</view>
+        </block>
+      </view>
+      <textarea class="suggestion" placeholder="请简单描述问题，也可留下您的手机，以便于我们帮您解决" bindinput="inputText"></textarea>
+      <view class="submit-btn" bindtap="submitComplains">立即提交</view>
+    </view>
+  </view>
+  <view class="service-detail" hidden="{{serviceType != '2'}}">
+    <view class="wifi">
+      <view class="wifi-left">
+        <text>WIFI</text>
+        <view class="room-wifi">{{hotel.room}}</view>
+      </view>
+      <view class="wifi-right" bindtap="connectWifi">一键连WIFI</view>
+    </view>
+  </view>
+  <view class="service-detail" hidden="{{serviceType != '3'}}">
+    <view class="tab-group">
+      <block wx:for="{{rent_tabs}}" wx:key="{{index}}">
+        <view class="tab {{item.selected ? 'selected' : ''}}" data-idx="{{index}}" bindtap="selectRent">{{item.text}}</view>
+      </block>
+      <view class="submit-btn" bindtap="submitRent">立即提交</view>
+    </view>
+  </view>
+  <view class="service-detail" hidden="{{serviceType != '4'}}">
+    <view class="tab-group">
+      <block wx:for="{{clean_tabs}}" wx:key="{{index}}">
+        <view class="tab {{clean_selected == index ? 'selected' : ''}}" bindtap="selectClean" data-idx="{{index}}">{{item}}</view>
+      </block>
+      <view class="submit-btn" bindtap="cleanRoom">立即提交</view>
+    </view>
+  </view>
+</view>
+
+<!--热销商品推荐模块  -->
+<view class="hot-sell">
+  <text class="hot-sell-title">精品热卖</text>
+  <view class="hot-sell-group">
+    <navigator class="hot-sell-item" wx:for="{{hot_sell}}" wx:key="{{index}}" url="../good/good">
+      <image class="hot-sell-pic" src="{{item.pic}}"></image>
+      <text class="hot-sell-name">{{item.name}}</text>
+      <text class="hot-sell-price">￥{{item.price}}</text>
+    </navigator>
+  </view>
+</view>
+
+<!--服务通知模块  -->
+<block wx:for="{{notices}}" wx:key="{{index}}">
+  <view class="notice-item">
+    <view class="notice-title">
+      <view class="notice-title-line"></view>
+      {{item.title}}
+    </view>
+    <view class="notice-text">
+      {{item.text}}
+      <view wx:if="{{item.status == 1}}" class="notice_status1">
+        <image src="../../images/waiting.png"></image>
+        待受理
+      </view>
+      <view wx:elif="{{item.status == 2}}" class="notice_status2">
+        <image src="../../images/dealing.png"></image>
+        处理中
+      </view>
+      <view wx:elif="{{item.status == 3}}" class="notice_status3">
+        <image src="../../images/finish.png"></image>
+        已完成
+      </view>
+    </view>
+  </view>
+</block>

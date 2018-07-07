@@ -1,0 +1,5 @@
+<!--pages/hotel-note/hotel.wxml-->
+
+<!--酒店指南详细内容  -->
+<text class="title">{{note.title}}</text>
+<text >{{note.text}}</text>

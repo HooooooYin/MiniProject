@@ -1,0 +1,58 @@
+<!--pages/good/good.wxml-->
+
+<!--商品信息  -->
+<image src="{{good.pic}}" class="good-img" mode="aspectFit"></image>
+<view class="good-info">
+  <text class="good-name">{{good.name}}</text>
+  <view class="good-detail">
+    <text>规格：{{good.size}}</text>
+    <text>剩余:{{good.num}}</text>
+    <text class="good-price">￥{{good.price}}</text>
+    <view class="good-instroduction">
+      {{good.name}}
+      <image src="{{good.pic}}" mode="aspectFit"></image>
+    </view>
+  </view>
+</view>
+
+<!--商品推荐  -->
+<view class="good-recommand">
+  <navigator wx:for="{{recommand}}" wx:key="{{index}}" class="recommand-detail">
+    <image src="{{item.pic}}" mode="aspectFit"></image>
+    <text>{{item.name}}</text>
+    <text>￥{{item.price}}</text>
+  </navigator>
+</view>
+
+<!--支付模块  -->
+<view class="pay-panel">
+  <view class="panel-item">
+    <image src="../../images/shop-icon.png"></image>
+    <text>进店</text>
+  </view>
+  <view class="panel-item" bindtap="powerCar">
+    <image src="../../images/shop-car.png"></image>
+    <view class="note" wx:if="{{note != 0}}">{{note}}</view>
+    <text>购物车</text>
+  </view>
+  <view class="add-shop-car" bindtap="addGood">加入购物车</view>
+  <view class="pay-now" bindtap="pay">立即结算</view>
+</view>
+
+<!--购物车  -->
+<view class="mask" wx:if="{{goods.length !== 0}}" hidden="{{showCar && goods.length !== 0}}" bindtap="closeCar"></view>
+<view class="shop-car" wx:if="{{goods.length !== 0}}" hidden="{{showCar && goods.length !== 0}}">
+  <view class="title">我的购物车</view>
+  <view wx:for="{{goods}}" wx:key="{{index}}" class="shop-car-item" wx:if="{{item.num > 0}}">
+    <view class="item-left">
+      <text>{{item.name}}</text>
+      <text>规格：{{item.size}}</text>
+    </view>
+    <view class="item-middle">￥{{item.price}}</view>
+    <view class="item-right">
+      <view bindtap="subNum" data-idx="{{item.good_id}}">-</view>
+      <view>{{item.num}}</view>
+      <view bindtap="addNum" data-idx="{{item.good_id}}">+</view>
+    </view>
+  </view>
+</view>

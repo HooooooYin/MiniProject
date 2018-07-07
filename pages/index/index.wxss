@@ -1,0 +1,578 @@
+/**index.wxss**/
+/*页面  */
+page{
+  /*Box model  */
+  height: 100%;
+  width: 100%;
+
+  /*Visual  */
+  background-color: #f6f8f9;
+}
+
+/*首页标题  */
+.title{
+  /*Box model */
+  padding: 20rpx;
+
+  /*Typographic */
+  text-align: center;
+
+  /*Visual */
+  color: #fff;
+  background-color: #ffd700;
+}
+
+
+
+/*广告  */
+.ad{
+  /*Box model */
+  height:50rpx;
+  padding: 10rpx 0;
+  
+  /*Typographic */
+  font-size: 13pt;
+  text-align: center;
+
+  /*Visual */
+  background-color:#fff9ef;
+  color:#f4a460; 
+}
+
+/*关闭广告按钮  */
+.ad-icon{
+  /*Positioning  */
+  float: right;
+
+  /*Box model  */
+  margin-right: 30rpx;
+}
+
+
+
+/*功能页导航栏  */
+.banner{
+  /*Box model */
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: row;
+
+  /*Typographic */
+  justify-content: space-around;
+
+  /*Visual */  
+  background-color: #fff;
+}
+
+/*具体功能项  */
+.banner-item{
+  /*Box model  */
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+
+  /*Typographic  */
+  justify-content: center;
+  align-items: center; 
+}
+
+/*功能项文本  */
+.banner-item text{
+  /*Typographic  */
+  font-size: 8pt;
+}
+
+
+
+/*功能项图片容器  */
+.banner-item icon{
+  /*Positioning  */
+  position: relative;
+
+  /*Box model  */
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-bottom: 20rpx;
+  padding: 5rpx;
+
+  /*Visual  */
+  background-color: #ffd700;
+}
+
+/*功能项图片  */
+.banner-item image{
+  /*Positioning  */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  /*Box model  */
+  width: 70%;
+  height: 70%;
+
+  /*Visual  */
+  transform: translate(-50%, -50%);
+}
+
+
+/*服务模块  */
+.service{
+  /*Box model  */
+  min-height: 200rpx;
+
+  /*Visual  */
+  background-color: #fff;
+}
+
+/*服务分类  */
+.service-type{
+  /*Box model */
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+  padding: 30rpx 30rpx 0 30rpx;
+  border-bottom: solid 1px #f5f5f5;
+
+  /*Typographic */
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*服务项目  */
+.service-item{
+  /*Box model */
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30rpx;
+
+  /*Typographic */
+  justify-content: center;
+  align-items: center;
+
+  /*Visual */
+  color: #808080;
+}
+
+/*服务项目图  */
+.service-item image{
+  /*Box model */
+  width: 60rpx;
+  height: 60rpx;
+}
+
+
+
+/*服务项目名称  */
+.service-item text{
+  /*Box model  */
+  margin-top: 15rpx;
+
+  /*Typographic  */
+  font-size: 10pt;
+}
+
+
+
+
+/*被选中的服务  */
+.service-type .active{
+  /*Box model  */
+  border-bottom: 2px solid #ffd700;
+
+  /*Visual  */
+  color: #000;
+}
+
+
+
+/*服务项目内容  */
+.service-detail{
+  /*Box model  */
+  padding: 30rpx 30rpx 50rpx 30rpx;
+}
+
+/*电话呼叫  */
+.service-detail .phone{
+  /*Box model */
+  padding:15rpx;
+  width:220rpx;
+  height:20rpx;
+  border-radius:40rpx;
+  
+  /*Typographic */
+  font-size:10pt;
+  text-align:center;
+  line-height: 20rpx;
+  
+  /*Visual */
+  background-color:#ffd700;
+  color:#fff;
+}
+
+
+
+/*投诉  */
+.complain{
+  /*Box model  */
+  display: flex;
+  flex-direction: column;
+
+  /*Typographic  */
+  align-items: stretch;
+  justify-content: center;
+}
+
+/*经理留言  */
+.manager{
+  /*Box model  */
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx;
+
+  /*Typographic  */
+  align-items: center;  
+}
+
+/*留言内容  */
+.manager text{
+  /*Box model */
+  width: 100%;
+  
+  /*Typographic */
+  font-size: 12pt;
+  
+  /*Visual */
+  color: #a9a9a9;
+}
+
+
+
+/*经理头像  */
+.manager image{
+  /*Box model */
+  height:100rpx;
+  width:120rpx;
+  border-radius:50%;
+  border: 1px solid #fff;
+  margin-right: 30rpx;
+  
+  /*Visual */  
+  background-color: #ffd700;
+}
+
+
+
+/*投诉标签组  */
+.tab-group{
+  /*Box model */
+  display:flex;
+  flex-direction:row;
+
+  /*Typographic  */
+  flex-wrap:wrap;
+  align-items: center;
+}
+
+/*被选中的标签组  */
+.tab-group .selected{
+  /*Visual  */
+  border-color: #ffd700;
+  color: #ffd700;
+  background-color: #fbf4d8;
+}
+
+
+
+/*标签  */
+.tab{
+  /*Box model */
+  width:30%;
+  height:45rpx;
+  border:1px #dcdcdc solid;
+  margin: 5rpx;
+
+  /*Typographic */
+  font-size:10pt;
+  line-height:45rpx;
+  text-align:center;
+}
+
+
+
+/*详细问题描述  */
+.suggestion{
+  /*Box model */
+  border: 1px #dcdcdc solid;
+  width: 90%;
+  height: 150rpx;
+  margin: 20rpx 0;
+  padding:30rpx;
+  
+  /*Typographic */
+  font-size: 10pt;
+
+  /*Visual */
+  background-color: #f5f5f5;
+  color:#a9a9a9;
+}
+
+
+
+/*提交按钮  */
+.submit-btn{
+  /*Box model */
+  width: 95%;
+  padding:15rpx;
+  height:20rpx;
+  border-radius:40rpx;
+  margin: 15rpx 0;
+  
+  /*Typographic */
+  font-size:10pt;
+  text-align:center;
+  line-height: 20rpx;
+  
+  /*Visual */
+  background-color:#ffd700;
+  color:#fff;
+}
+
+
+
+/*WIFI链接服务  */
+.wifi{
+  /*Positioning */
+  position: relative;
+  
+  /*Box model */
+  height: 100rpx;
+}
+
+/*wifi信息  */
+.wifi-left{
+  /*Positioning */
+  position: absolute;
+  left: 0;
+  top:50%;
+
+  /*Other */
+  transform: translateY(-50%);
+}
+
+/*WIFI字样  */
+.wifi-left text{
+  /*Typographic */
+  font-size: 10pt;
+  
+  /*Visual */
+  color: #dcdcdc;
+}
+
+
+
+/*房间号  */
+.wifi-left .room-wifi{
+  /*Typographic */
+  font-size: 18pt;
+  
+  /*Visual */
+  color: #ffd700;
+}
+
+
+
+/*WIFI连接按钮  */
+.wifi-right{
+  /*Positioning */
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  
+  /*Box model */
+  border:2px solid #4169e1;
+  border-radius:25rpx;
+  padding:5rpx;
+  width:200rpx;
+
+  /*Typographic */
+  font-size:10pt;
+  text-align:center;
+  
+  /*Visual */
+  
+  color:#4169e1;
+}
+
+
+
+/*热销商品  */
+.hot-sell{
+  /*Box model */
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  
+  /*Typographic */
+  font-size: 10pt;
+  
+  /*Visual */  
+  background-color: #fff;
+  color: #808080;
+}
+
+/*热销商品标题  */
+.hot-sell-title{
+  /*Box model  */
+  margin: 30rpx;
+}
+
+
+
+/*热销商品列表  */
+.hot-sell .hot-sell-group{
+  /*Box model  */
+  display: flex;
+  flex-direction: row;
+
+  /*Typographic  */
+  justify-content: space-around;
+}
+
+/*热销商品  */
+.hot-sell-item{
+  /*Box model  */
+  display: flex;
+  flex-direction: column;
+}
+
+/*热销商品图  */
+.hot-sell-pic{
+  /*Box model  */
+  height: 150rpx;
+  width: 150rpx;
+  border: 1px #dcdcdc solid;
+}
+
+/*热销商品名称  */
+.hot-sell-name{
+  /*Box model  */
+  margin: 10rpx;
+}
+
+/*热销商品价格  */
+.hot-sell-price{
+  /*Visual  */
+  color: #ff0000;
+}
+
+
+
+/*通知项  */
+.notice-item{
+  /*Box model  */
+  margin: 15rpx;
+  border-radius: 10rpx;
+
+  /*Visual  */
+  background-color: #fff;  
+}
+
+/*通知标题  */
+.notice-title{
+  /*Box model */
+  padding: 20rpx;
+  border-bottom: 1px #dcdcdc solid;
+  display: flex;
+  flex-direction: row;
+  /*Typographic */
+  font-size: 12pt;
+  align-items: center;
+  
+  /*Visual */  
+  color: #808080; 
+}
+
+
+
+/*标题装饰  */
+.notice-title-line{
+  /*Box model  */
+  border-color:#ffd700;
+  height:20rpx;
+  width:0;
+  border-style:solid;
+  margin-right: 20rpx;
+}
+
+
+
+/*通知内容  */
+.notice-text{
+  /*Box model  */
+  padding: 30rpx;
+  
+  /*Typographic  */
+  font-size: 12pt;
+
+  /*Visual  */
+  color: #d3d3d3;
+}
+
+/*待受理  */
+.notice_status1{
+  /*Visual  */
+  color: #ff4500;
+}
+
+
+
+/*待受理图  */
+.notice_status1 image{
+  /*Box model  */
+  width:30rpx;
+  height:30rpx;
+  border-radius:50%;
+  
+  /*Visual  */
+  background-color:#ff4500;
+}
+
+
+
+/*处理中  */
+.notice_status2{
+  /*Visual  */  
+  color: #0000cd;
+}
+
+/*处理中图  */
+.notice_status2 image{
+  /*Box model  */
+  width:30rpx;
+  height:30rpx;
+  border-radius:50%;
+  
+  /*Visual  */  
+  background-color:#0000cd;  
+}
+
+
+
+/*已完成  */
+.notice_status3{
+  /*Visual  */  
+  color: #00ff00;
+}
+
+/*已完成图  */
+.notice_status3 image{
+  /*Box model  */  
+  width:30rpx;
+  height:30rpx;
+  border-radius:50%;
+
+  /*Visual  */
+  background-color:#00ff00;  
+}

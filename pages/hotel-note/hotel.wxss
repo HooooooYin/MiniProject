@@ -1,0 +1,23 @@
+/* pages/hotel-note/hotel.wxss */
+
+/*页面  */
+page{
+  /*Box model  */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /*Typographic  */
+  align-items: center;
+}
+
+/*题目  */
+.title{
+  /*Box model  */
+  width: 100%;
+
+  /*Typographic  */
+  font-size: 18pt;
+  text-align: center;
+}

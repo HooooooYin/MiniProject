@@ -1,0 +1,213 @@
+/* pages/bill/bill.wxss */
+
+/*页面  */
+
+page{
+  /*Box model  */
+  height: 100%;
+  width: 100%;
+}
+
+/*页面标题  */
+.bill-title{
+
+  /*Box model  */
+  width: 100%;
+  padding: 10rpx 50rpx;
+
+
+  /*Typographic  */
+  font-size: 10pt;
+
+
+  /*Visual  */
+  background-color: #dcdcdc;
+
+}
+
+
+
+/*发票内容项  */
+.bill-item{
+  /*Box model  */
+  display: flex;
+  /*Typographic  */
+  flex-direction: row;
+}
+
+/*发票内容项名称  */
+.bill-item label{
+  /*Box model  */
+  padding: 30rpx;
+  width: 30%;
+
+  /*Visual  */
+  color: #a9a9a9;
+}
+
+
+
+/*发票内容项输入  */
+.bill-item input{
+
+  /*Box model */
+  padding: 30rpx;
+  /*Visual  */
+  color: #a9a9a9;
+  
+}
+
+
+
+/*发票内容项输入  */
+.bill-item view{
+  /*Box model */
+  padding: 0 30rpx;
+
+  /*Typographic */
+  line-height: 110rpx;
+  
+}
+
+
+
+/*必填内容  */
+.required{
+  /*Visual  */
+  color: #ff0000;
+}
+
+
+
+/*提交按钮  */
+.bill-btn{
+  /*Positioning */
+  position: fixed;
+  bottom: 50rpx;
+  left: 0;
+  right: 0;
+  z-index: 777;
+
+  /*Box model */
+  width: 80%;
+  padding:15rpx;
+  height:40rpx;
+  border-radius:40rpx;
+  margin: auto;
+
+  /*Typographic */
+  font-size:10pt;
+  text-align:center;
+  line-height: 40rpx;
+
+  /*Visual */
+  background-color:#ffd700;
+  color:#fff;
+
+}
+
+
+
+
+/*弹出框遮罩层  */
+.mask{
+  /*Positioning */
+  position: fixed;
+  z-index: 888;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  /*Box model */
+  width: 100%;
+  height: 100%;
+
+  /*Visual */
+  background-color: rgba(0, 0, 0, 0.3);
+
+}
+
+
+
+/*选择发票内容框  */
+.bill-modal{
+  /*Positioning */
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+
+  /*Box model */
+  width: 100%;
+  display: flex;
+
+  /*Typographic */
+  flex-direction: column;
+
+  /*Visual */
+  background-color: #fff;
+
+}
+
+/*弹出框的按钮列表  */
+.bill-modal-control{
+  /*Box model  */
+  display: flex;  
+  width: 100%;
+
+  /*Typographic  */
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+/*取消  */
+.cancel{
+  /*Box model  */
+  margin: 20rpx;
+
+  /*Visual  */
+  color: #dcdcdc;
+}
+
+
+
+/*确认  */
+.comfirm{
+  /*Box model  */
+  margin: 20rpx;
+
+  /*Visual  */
+  color: #00ff7f;
+}
+
+
+
+/*弹出框主体  */
+.bill-type{
+  /*Box model  */
+  width: 100%;
+  height: 300rpx;
+}
+
+/*弹出框选项  */
+.bill-type-option{
+  /*Typographic  */
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 12pt;
+}
+
+
+
+/*选中项边框  */
+.bill-type-border{
+  /*Box model  */
+  height: 80rpx;
+  border-style: solid;
+  border-color: #00ff7f;
+  border-width: 1px 0;
+  width: 40%;
+  /*Visual  */
+  transform: translateX(75%);
+}
+

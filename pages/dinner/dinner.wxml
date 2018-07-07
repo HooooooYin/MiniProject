@@ -1,0 +1,67 @@
+<!--pages/dinner/dinner.wxml-->
+
+<!--送餐服务标题  -->
+<view class="shop-header">
+  <image src="../../images/dinner.png" class="shop-header-icon" mode="aspectFit"></image>
+  <view class="shop-header-detail">
+    <view class="shop-header-title">送餐服务</view>
+    <view class="shop-header-text">下单付款后十分钟内配送，祝您入住愉快</view>
+  </view>
+</view>
+
+<!--送餐页面主要模块  -->
+<view class="shop-body">
+  <scroll-view class="shop-body-left"  scroll-y="true">
+    <view class="shop-type {{currentType == index ? 'selected' : ''}}" wx:for="{{shop}}" bindtap="selectType" data-idx="{{index}}">{{item.type}}</view>
+  </scroll-view>
+  <scroll-view class="shop-body-right" scroll-y="true">
+    <text class="shop-body-title">{{shop[currentType].type}}</text>
+    <view class="shop-body-group">
+      <view wx:for="{{shop[currentType].goods}}" wx:key="{{index}}" class="shop-good" wx:if="{{item.num > 0}}">
+        <view class="good-pic-container">
+          <image src="{{item.pic}}" class="good-pic" mode="aspectFit" bindtap="preView" data-src="{{item.pic}}"></image>
+        </view>
+        <view class="shop-good-detail">
+          <text class="shop-good-title">{{item.name}}</text>
+          <text>规格：{{item.size}}</text>
+          <text>剩余：{{item.num}}</text>
+          <text class="shop-good-price">￥ {{item.price}}</text>
+          <view class="shop-buy-num">
+            <view class="good-sub" bindtap="subGood" data-idx="{{item.good_id}}" wx:if="{{item.buy > 0}}">-</view>
+            <view  wx:if="{{item.buy > 0}}">{{item.buy}}</view>
+            <view class="good-add" bindtap="addGood" data-idx="{{item.good_id}}">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<!--支付模块  -->
+<view class="shopping-car">
+  <image src="../../images/shopping-car.png" class="shopping-icon" bindtap="powerCar" mode="aspectFit"></image>
+  <view class="note" wx:if="{{note != 0}}">{{note}}</view>
+  <view class="bill">
+    <text class="money">￥ {{total}}</text>
+    <text>当前金额</text>
+  </view>
+  <view class="shopping-btn" bindtap="pay">{{showCar ? '立即结算' : '确认购买'}}</view>
+</view>
+
+<!--购物车  -->
+<view class="mask" wx:if="{{goods.length !== 0}}" hidden="{{showCar}}" bindtap="closeCar"></view>
+<view class="shop-car" wx:if="{{goods.length !== 0}}" hidden="{{showCar}}">
+  <view class="title">我的购物车</view>
+  <view wx:for="{{goods}}" wx:key="{{index}}" class="shop-car-item" wx:if="{{item.num > 0}}">
+    <view class="item-left">
+      <text>{{item.name}}</text>
+      <text>规格：{{item.size}}</text>
+    </view>
+    <view class="item-middle">￥{{item.price}}</view>
+    <view class="item-right">
+      <view bindtap="subGood" data-idx="{{item.good_id}}">-</view>
+      <view>{{item.num}}</view>
+      <view bindtap="addGood" data-idx="{{item.good_id}}">+</view>
+    </view>
+  </view>
+</view>

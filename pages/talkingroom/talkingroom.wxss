@@ -1,0 +1,256 @@
+/* pages/talkingroom/talkingroom.wxss */
+/*页面  */
+page{
+  /*Box model  */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/*聊天室名称  */
+.room-name{
+  /*Box model  */
+  padding: 20rpx;
+  
+  /*Typographic  */
+  text-align: center;
+  
+  /*Visual  */
+  background-color: #ffd700;
+  color: #fff;
+}
+
+
+
+/*聊天室背景  */
+.room-background{
+  /*Box model  */
+  height: 85%;
+  overflow: scroll;
+  padding: 0 30rpx;
+
+  /*Visual  */
+  background-color: #f5f5f5;  
+}
+
+
+
+/*对话区域  */
+.talking-area{
+  /*Box model  */  
+  height: 100%;
+}
+
+
+
+/*用户输入  */
+.room-footer{
+  /*Box model  */    
+  display: flex;
+  flex-direction: row;
+  padding: 10rpx 20rpx;
+  border: 1px solid #dcdcdc;
+  /*Typographic  */
+  align-items: center;
+  justify-content: space-between; 
+  flex: 1;
+}
+
+
+
+/*打开图片发送  */
+.more{
+  /*Box model  */      
+  height: 50rpx;
+  width: 50rpx;
+  border-radius: 50rpx;
+  border: 1px solid #a9a9a9;
+}
+
+
+
+/*发送按钮  */
+.submit-btn{
+  /*Box model  */      
+  padding: 10rpx 30rpx;
+  border-radius: 20rpx;
+  /*Typographic  */
+  font-size: 14pt;
+
+  /*Visual  */
+  color: #fff;
+  background-color: #32cd32; 
+}
+
+
+
+/*输入框  */
+.talking{
+  /*Box model  */
+  border-bottom: 1px #dcdcdc solid;
+  margin: 0 20rpx;
+
+  /*Typographic  */
+  flex: 1;
+}
+
+
+
+/*我的发言  */
+.my-talk{
+  /*Box model  */  
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 40rpx;
+  
+  /*Typographic  */  
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+/*我的头像  */
+.my-icon{
+  /*Box model  */    
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 80rpx;
+
+  /*Visual  */
+  background-color: #fff;
+}
+
+
+
+/*我的发言文本  */
+.my-text{
+  /*Box model  */    
+  padding: 10rpx 30rpx;
+  border-radius: 10rpx;
+  max-width: 50%;
+
+  /*Typographic  */
+  word-wrap: break-word;
+  word-break: break-all;
+  
+  /*Visual  */
+  background-color: #00ff00;  
+}
+
+
+
+/*我发送的图片  */
+.my-img{
+  /*Box model  */      
+  margin-right: 20rpx;
+  max-width: 50%;
+  max-height: 200rpx;
+
+  /*Visual  */  
+  background-color: #fff;
+}
+
+
+
+/*我发言的三角形  */
+.my-triangle{
+  /*Box model  */
+  border: 10rpx;
+  border-style: solid;
+  border-color: transparent transparent transparent #00ff00;
+  height: 0;
+  width: 0;
+
+  /*Visual  */
+  transform: translateY(30rpx);
+}
+
+
+
+/*其他人发言  */
+.other-talk{
+  /*Box model  */
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 40rpx;
+  
+  /*Typographic  */
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/*其他人头像  */
+.other-icon{
+  /*Box model  */
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 80rpx;
+
+  /*Visual  */
+  background-color: #fff;
+}
+
+
+
+/*其他人发言的文本  */
+.other-text{
+  /*Box model  */
+  padding: 10rpx 30rpx;
+  border-radius: 10rpx;
+  max-width: 50%;
+
+  /*Typographic  */
+  word-wrap: break-word;
+  word-break: break-all;
+
+  /*Visual  */
+  background-color: #fff;  
+}
+
+
+
+/*其他人发的图片  */
+.other-img{
+  /*Box model  */
+  max-width: 50%;
+  margin-left: 20rpx;
+  max-height: 200rpx;
+
+  /*Visual  */
+  background-color: #fff;  
+}
+
+
+
+/*其他人发的三角形  */
+.other-triangle{
+  /*Box model  */
+  border: 10rpx;
+  border-style: solid;
+  border-color: transparent #fff transparent transparent;
+  height: 0;
+  width: 0;
+
+  /*Visual  */
+  transform: translateY(30rpx);
+}
+
+
+
+/*发送图片按钮  */
+.sendPhoto{
+  /*Box model  */
+  padding:10rpx 20rpx;
+  border:1px solid #dcdcdc;
+  margin:0 20rpx;
+  border-radius:20rpx;
+  /* Typographic */
+  flex:1;
+  text-align:center;
+
+  /*Visual  */
+  color:#a9a9a9;
+  
+}

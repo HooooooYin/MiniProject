@@ -1,0 +1,32 @@
+<!--pages/talkingroom/talkingroom.wxml-->
+
+<!--聊天室题目  -->
+<view class="room-name">{{hotel.name}}</view>
+
+<!--聊天内容  -->
+<view class="room-background">
+<scroll-view class="talking-area" scroll-y="true" scroll-top="{{scrollTop}}" scroll-with-animation>
+  <block wx:for="{{contentList}}" wx:key="{{index}}">
+    <view class="my-talk" wx:if="{{item.isMe}}">
+      <view class="my-text" wx:if="{{item.text}}">{{item.text}}</view>
+      <image class="my-img" wx:if="{{item.img}}" src="{{item.img}}" mode="aspectFit"></image>
+      <view class="my-triangle" wx:if="{{item.text}}"></view>
+      <open-data class="my-icon" type="userAvatarUrl"></open-data>
+    </view>
+    <view class="other-talk" wx:if="{{!item.isMe}}">
+      <image src="../../images/manager.png" mode="aspectFit" class="other-icon"></image>
+      <view class="other-triangle" wx:if="{{item.text}}"></view>
+      <view class="other-text" wx:if="{{item.text}}">{{item.text}}</view>
+      <image class="other-img" wx:if="{{item.img}}" src="{{item.img}}"  mode="aspectFit"></image>
+    </view>
+  </block>
+</scroll-view>
+</view>
+
+<!--用户输入  -->
+<view class="room-footer">
+  <image src="../../images/plus.png" mode="aspectFit" class="more" bindtap="changeStatus"></image>
+  <input class="talking" type="text" bindKeyInput="keyInput" hidden="{{!status}}" value="{{inputValue}}"></input>
+  <view class="submit-btn" hidden="{{!status}}" bindtap="submitText">发送</view>
+  <view class="sendPhoto"  hidden="{{status}}">发送图片</view>
+</view>

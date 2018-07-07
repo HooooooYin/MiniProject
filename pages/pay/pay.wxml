@@ -1,0 +1,43 @@
+<!--pages/pay/pay.wxml-->
+
+<!--支付标题  -->
+<view class="pay-header">
+  <text>待支付</text>
+  <text>订单将配送至{{hotel.room}}</text>
+</view>
+
+<!--购物车内容  -->
+<view class="shop-car">
+  <view class="shop-car-title">购物车</view>
+  <view wx:for="{{goods}}" class="item">
+    <view class="item-left">
+      <text>{{item.name}}</text>
+      <text>规格：{{item.size}}</text>
+    </view>
+    <view class="item-right">￥{{item.price * item.num}}</view>
+  </view>
+</view>
+
+<!--订单备注  -->
+<view class="remark">
+  <view>订单备注</view>
+  <view>
+    口味、偏好等
+    <view class="arrow"></view>
+  </view>
+</view>
+
+<!--支付方式  -->
+<view class="pay-info">
+  <image src="../../images/wechat.png" mode="aspectFit"></image>
+  <view class="pay-info-text">
+    <text>微信支付</text>
+    <text>推荐安装5.0以上版本的用户使用</text>
+  </view>
+</view>
+
+<!--点击支付  -->
+<view class="pay-footer">
+  <view class="pay-price">￥{{total}}</view>
+  <view class="pay-btn" bindtap="payMoney">立即支付</view>
+</view>

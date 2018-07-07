@@ -1,0 +1,79 @@
+/* pages/rebbag/rebbag.wxss */
+/*页面  */
+page{
+  /*Box model */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  /*Typographic */
+  align-items: center;
+  
+  /*Visual */
+  background-color: #f6f8f9;
+}
+
+
+
+/*红包图  */
+.rebbag{
+  /*Box model */  
+  width:98%;
+  height:280rpx;
+  border-radius:40rpx;
+  margin: 20rpx 0;
+}
+
+
+
+/*通知项  */
+.notice-item{
+  /*Box model  */
+  margin: 15rpx;
+  border-radius: 10rpx;
+
+  /*Visual  */
+  background-color: #fff;  
+}
+
+/*通知标题  */
+.notice-title{
+  /*Box model */
+  padding: 20rpx;
+  border-bottom: 1px #dcdcdc solid;
+  display: flex;
+  flex-direction: row;
+  /*Typographic */
+  font-size: 12pt;
+  align-items: center;
+  
+  /*Visual */  
+  color: #808080; 
+}
+
+
+
+/*标题装饰  */
+.notice-title-line{
+  /*Box model  */
+  border-color:#ffd700;
+  height:20rpx;
+  width:0;
+  border-style:solid;
+  margin-right: 20rpx;
+}
+
+
+
+/*通知内容  */
+.notice-text{
+  /*Box model  */
+  padding: 30rpx;
+  
+  /*Typographic  */
+  font-size: 12pt;
+
+  /*Visual  */
+  color: #d3d3d3;
+}

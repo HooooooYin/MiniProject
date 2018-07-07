@@ -1,0 +1,12 @@
+<!--pages/hotel/hotel.wxml-->
+
+<!--酒店指南页跳转  -->
+<navigator url="../hotel-note/hotel">
+  <view class="link">
+    <view class="link-title">
+      <view class="link-title-line"></view>
+      {{hotel.title}}
+    </view>
+    <view class="link-text">{{hotel.text}}</view>
+  </view>
+</navigator>

@@ -1,0 +1,5 @@
+<!--pages/travel/travel.wxml-->
+
+<!--旅游推荐页面  -->
+<text class="title">{{travel.title}}</text>
+<text>{{travel.text}}</text>

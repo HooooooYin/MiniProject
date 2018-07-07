@@ -1,0 +1,47 @@
+<!--pages/bill/bill.wxml-->
+<!--发票表单模块  -->
+<view  class="bill-title">发票</view>
+<form class="bill-info">
+  <view class="bill-item">
+    <label>发票类型</label>
+    <view  bindtap="showModal">{{array[type]}}</view>
+  </view>
+  <view class="bill-item">
+    <label>
+      开票金额
+      <text class="required">*</text>
+    </label>
+    <input placeholder="可不填（请填数字）"></input>
+  </view>
+  <view class="bill-item">
+    <label>
+      发票抬头
+      <text class="required">*</text>
+    </label>
+    <input placeholder="请输入单位名称" required></input>
+  </view>
+  <view class="bill-item">
+    <label>税号</label>
+    <input  placeholder="请输入纳税人识别号"></input>
+  </view>
+  <view class="bill-item">
+    <label>备注</label>
+    <input placeholder="请输入备注"></input>
+  </view>
+
+  <view class="bill-btn">预约开票</view>
+</form>
+
+<!--发票类型弹出窗模块  -->
+<view class="mask" hidden="{{isShowModal}}" bindtap="closeModal"></view>
+<view hidden="{{isShowModal}}" class="bill-modal">
+  <view class="bill-modal-control">
+    <view bindtap="closeModal" class="cancel">取消</view>
+    <view bindtap="submitType" class="comfirm">确定</view>
+  </view>
+  <picker-view class="bill-type" indicator-class="bill-type-border" bindchange="changeType">
+    <picker-view-column>
+      <view wx:for="{{array}}" class="bill-type-option"  value="{{value}}">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>

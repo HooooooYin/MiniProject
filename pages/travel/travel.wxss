@@ -1,0 +1,22 @@
+/* pages/travel/travel.wxss */
+/*页面  */
+page{
+  /*Box model  */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /*Typograph  */
+  align-items: center;
+}
+
+/*题目  */
+.title{
+  /*Box model  */
+  width: 100%;
+  
+  /*Typographic  */
+  font-size: 18pt;
+  text-align: center;
+}

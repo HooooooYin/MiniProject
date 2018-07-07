@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/shop/shop",
+    "pages/bill/bill",
+    "pages/rebbag/rebbag",
+    "pages/hotel/hotel",
+    "pages/hotel-note/hotel",
+    "pages/travel/travel",
+    "pages/good/good",
+    "pages/dinner/dinner",
+    "pages/pay/pay",
+    "pages/talkingroom/talkingroom"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffd700",
+    "navigationBarTitleText": "欢乐住",
+    "navigationBarTextStyle": "#fff"
+  }
+}
