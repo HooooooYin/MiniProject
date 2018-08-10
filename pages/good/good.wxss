@@ -10,7 +10,7 @@ page{
   flex-direction: column;
 
   /*Visual  */
-  background-color: #f5f5f5;
+  background-color: #f3f5f7;
 }
 
 /*商品图  */
@@ -22,7 +22,7 @@ page{
   border-bottom: 1px #dcdcdc solid;
 
   /*Visual  */
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 
@@ -33,7 +33,7 @@ page{
   padding: 30rpx 30rpx 20rpx 30rpx;
 
   /*Visual  */
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 /*商品名称  */
@@ -51,7 +51,7 @@ page{
   flex-direction: column;
 
   /*Visual  */
-  color: #a9a9a9;
+  color: #929292;
 }
 
 /*商品详情文本  */
@@ -92,7 +92,7 @@ page{
   /*Box model  */
   display: flex;
   flex-direction: row;
-  background-color: #fff;
+  background-color: #ffffff;
   margin-top: 30rpx;
 
   /*Typographic  */
@@ -108,7 +108,6 @@ page{
 }
 
 
-
 /*商品推荐名称  */
 .recommand-detail{
   /*Box model  */
@@ -118,11 +117,19 @@ page{
   margin: 30rpx;
 
   /*Visual  */
-  color: #a9a9a9;
+  color: #929292;
+}
+
+.recommand-detail text{
+  /*Box model  */
+  margin:10rpx 0;
 }
 
 /*推荐商品价格  */
 .recommand-detail text:last-child{
+  /*Box model  */
+  margin: 0;
+
   /*Visual  */
   color: #ff0000;
 }
@@ -137,9 +144,10 @@ page{
   /*Box model  */
   display: flex;
   flex-direction: row;
+  height: 100rpx;
 
   /*Visual  */
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 /*支付栏项  */
@@ -152,18 +160,18 @@ page{
   flex-direction: column;
   border: 1px #dcdcdc solid;
   width: 150rpx;
-  height: 110rpx;
 
   /*Typographic */
   justify-content: center;
   align-items: center;
+  font-size:10pt;
 }
 
 /*支付栏项图  */
 .panel-item image{
   /*Box model  */
-  width: 50rpx;
-  height: 50rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 /*购物车图表红点  */
@@ -182,7 +190,7 @@ page{
   line-height:25rpx;
   /*Visual */
   background-color:#ff4500;
-  color:#fff;
+  color:#ffffff;
 }
 
 
@@ -193,24 +201,24 @@ page{
   width: 250rpx;
 
   /*Typographic */
-  line-height: 110rpx;
+  line-height: 100rpx;
   text-align: center;
-  font-size: 14pt;
+  font-size: 12pt;
 
   /*Visual */ 
-  background-color: #ffd700;
-  color: #fff;
+  background-color: #ffbc21;
+  color: #ffffff;
 }
 
 
 
 /*立即支付按钮  */
 .pay-now{
-  line-height: 110rpx;
+  line-height: 100rpx;
   text-align: center;
   background-color: #ff4500;
-  color: #fff;
-  font-size: 14pt;
+  color: #ffffff;
+  font-size: 12pt;
   width: 200rpx;
 }
 
@@ -246,7 +254,7 @@ page{
   flex-direction: column;
 
   /*Visual */
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 /*购物车题目  */
@@ -273,7 +281,7 @@ page{
   border-bottom: 1px solid #dcdcdc;
 
   /*Visual */
-  background-color: #fff; 
+  background-color: #ffffff; 
 }
 
 /*购物车条目左侧  */
@@ -295,7 +303,7 @@ page{
 /*购物车条目副标题  */
 .item-left text:last-child{
   /*Visual  */
-  color: #a5a5a5;
+  color: #929292;
 }
 
 
@@ -360,6 +368,6 @@ page{
   line-height:25rpx;
 
   /*Visual */
-  color: #fff;
+  color: #ffffff;
   background-color: #ffd700;
 }

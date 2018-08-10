@@ -1,0 +1,15 @@
+<!--pages/remark/remark.wxml-->
+<view class="text-container">
+  <block wx:if="{{kind === '2'}}">
+    <text>快速备注</text>  
+    <view class="tab_group">
+      <view class="tab {{item.selected ? 'selected' : ''}}" wx:for="{{tabs}}" data-idx="{{index}}" bindtap="selectTab">{{item.text}}</view>
+    </view>
+  </block>
+  <text>订单备注</text>
+  <textarea placeholder='请输入备注内容（可不填，最多可输入50个字）' bindinput="inputText"></textarea>
+</view>
+
+<view class="confirm-btn" bindtap="submit">确定</view>
+
+<view class="cancel-btn" bindtap="back">不备注了</view>

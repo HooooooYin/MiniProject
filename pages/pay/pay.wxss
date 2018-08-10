@@ -6,7 +6,7 @@ page{
   height: 100%;
 
   /*Visual */
-  background-color: #f5f5f5;
+  background-color: #f3f5f7;
 }
 
 /*支付页面头部  */
@@ -22,7 +22,7 @@ page{
 
   /*Visual */
   background-color:#ff8c00;
-  color:#fff;
+  color:#ffffff;
 }
 
 /*支付页面说明副标题  */
@@ -40,7 +40,7 @@ page{
   width: 100%;
 
   /*Visual  */
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 /*购物车信息标题  */
@@ -49,7 +49,11 @@ page{
   width: 100%;
   padding: 0 50rpx;
 
+  /*Typographic  */
+  font-size: 12pt;
+
   /*Visual  */  
+  color: #929292;
   background-color: #f5f5f5;
 }
 
@@ -91,6 +95,50 @@ page{
 
 
 /*订单备注  */
+.person-num{
+  /*Box model */
+  margin: 30rpx 0;
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx 50rpx;
+  
+  /*Typographic */
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14pt;
+
+  /*Visual  */
+  background-color: #ffffff;
+}
+
+.person-num view:nth-child(2){
+  /*Box model  */
+  width: 200rpx;
+  
+  /*Typographic  */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+
+/*箭头  */
+.arrow-down{
+  /*Box model  */
+  width: 15rpx;
+  height: 15rpx;
+  border-bottom: 2px solid #a9a9a9;
+  border-right: 2px solid #a9a9a9;
+
+  /*Visual  */
+  transform: rotate(45deg);
+}
+
+
+
+
+/*订单备注  */
 .remark{
   /*Box model */
   margin: 30rpx 0;
@@ -104,19 +152,33 @@ page{
   font-size: 14pt;
 
   /*Visual  */
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 /*订单备注提示  */
-.remark view:last-child{
+.remark .remark-text{
   /*Box model */  
   color: #a9a9a9;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
 
   /*Typographic */  
   align-items: center;
 }
+
+/*备注字样  */
+.remark .remark-text view:first-child{
+  /*Box model  */
+  width: 300rpx;
+
+  /*Typographic  */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+}
+
 
 /*箭头  */
 .arrow{
@@ -145,7 +207,7 @@ page{
   align-items: center;
 
   /*Visual */
-  background-color: #fff; 
+  background-color: #ffffff; 
 }
 
 /*支付信息图片  */
@@ -223,5 +285,115 @@ page{
 
   /*Visual */
   background-color: #ff6347;
-  color: #fff;
+  color: #ffffff;
+}
+
+
+/*弹出框遮罩层  */
+.mask{
+  /*Positioning */
+  position: fixed;
+  z-index: 888;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  /*Box model */
+  width: 100%;
+  height: 100%;
+
+  /*Visual */
+  background-color: rgba(0, 0, 0, 0.3);
+
+}
+
+
+
+/*选择发票内容框  */
+.person-modal{
+  /*Positioning */
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+
+  /*Box model */
+  width: 100%;
+  display: flex;
+
+  /*Typographic */
+  flex-direction: column;
+
+  /*Visual */
+  background-color: #ffffff;
+
+}
+
+/*弹出框的按钮列表  */
+.person-modal-control{
+  /*Box model  */
+  display: flex;  
+  width: 100%;
+
+  /*Typographic  */
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+/*取消  */
+.cancel{
+  /*Box model  */
+  margin: 20rpx;
+
+  /*Visual  */
+  color: #929292;
+}
+
+
+
+/*确认  */
+.comfirm{
+  /*Box model  */
+  margin: 20rpx;
+
+  /*Visual  */
+  color: #00ff7f;
+}
+
+
+
+/*弹出框主体  */
+.person-type{
+  /*Box model  */
+  width: 100%;
+  height: 300rpx;
+}
+
+/*弹出框选项  */
+.person-type-option{
+  /*Typographic  */
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 12pt;
+}
+
+
+
+/*选中项边框  */
+.person-type-border{
+  /*Box model  */
+  height: 80rpx;
+  border-style: solid;
+  border-color: #00ff7f;
+  border-width: 1px 0;
+  width: 10%;
+  /*Visual  */
+  transform: translateX(450%);
+}
+
+
+
+.require{
+  /*Visual  */
+  color: #ff4500;
 }

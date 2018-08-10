@@ -1,0 +1,75 @@
+/* pages/scanning/scanning.wxss */
+page{
+  /*Box model  */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /*Typographic  */
+  justify-content: center;
+  align-items: center;
+
+  /*Visual  */
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 215, 0, 0.3));
+}
+
+/*标题  */
+.title{
+  /*Box model  */
+  margin-bottom: 400rpx;
+  display: flex;
+  flex-direction: column;
+  width:300rpx;
+
+  /*Typographic  */
+  font-size: 24pt;
+  font-weight: bold;
+  text-align: center;
+
+  /*Visual  */
+  color: #ffd700;
+}
+
+/*主标题图片  */
+.title view:first-child image{
+  /*Box model  */
+  height: 200rpx;
+}
+
+
+/*副标题图片  */
+.title view:last-child image{
+  /*Box model  */
+  height: 50rpx;
+}
+
+
+
+/*按钮  */
+.btn{
+  /*Box model  */
+  display: flex;
+  flex-direction: row;
+
+  /*Typographic  */
+  justify-content: space-around;
+  align-items: center;
+
+  /*Visual  */
+  background-color: #ffbc21;
+  color: #ffffff;
+}
+
+/*按钮的二维码图片  */
+.btn image{
+  height: 50rpx;
+  width: 50rpx;
+}
+
+
+
+/*按钮文本  */
+.btn text{
+  margin-left: 20rpx;
+}

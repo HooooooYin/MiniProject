@@ -31,8 +31,12 @@ page{
 .bill-item{
   /*Box model  */
   display: flex;
+  border-bottom: 1px solid #f5f5f5;
+
   /*Typographic  */
   flex-direction: row;
+  font-size:12pt;
+
 }
 
 /*发票内容项名称  */
@@ -42,7 +46,7 @@ page{
   width: 30%;
 
   /*Visual  */
-  color: #a9a9a9;
+  color: #929292;
 }
 
 
@@ -53,7 +57,7 @@ page{
   /*Box model */
   padding: 30rpx;
   /*Visual  */
-  color: #a9a9a9;
+  color: #929292;
   
 }
 
@@ -67,6 +71,8 @@ page{
   /*Typographic */
   line-height: 110rpx;
   
+  /*Visual  */
+  color: #929292;
 }
 
 
@@ -102,7 +108,7 @@ page{
 
   /*Visual */
   background-color:#ffd700;
-  color:#fff;
+  color:#ffffff;
 
 }
 
@@ -145,7 +151,7 @@ page{
   flex-direction: column;
 
   /*Visual */
-  background-color: #fff;
+  background-color: #ffffff;
 
 }
 

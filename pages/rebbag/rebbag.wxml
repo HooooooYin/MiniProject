@@ -1,12 +1,12 @@
 <!--pages/rebbag/rebbag.wxml-->
 <!--送红包活动通知  -->
 <image src="../../images/rebbag1.png" class="rebbag"></image>
-<block wx:for="{{notices}}" wx:key="{{index}}">
+<block wx:for="{{notices}}" wx:key="{{item.id}}">
   <view class="notice-item">
     <view class="notice-title">
       <view class="notice-title-line"></view>
       {{item.title}}
     </view>
-    <view class="notice-text">{{item.text}}</view>
+    <view class="notice-text">{{item.docs}}</view>
   </view>
 </block>

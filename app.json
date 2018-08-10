@@ -1,7 +1,10 @@
 {
   "pages": [
+    "pages/loading/loading",
+    "pages/scanning/scanning",
     "pages/index/index",
     "pages/shop/shop",
+    "pages/pay/pay",
     "pages/bill/bill",
     "pages/rebbag/rebbag",
     "pages/hotel/hotel",
@@ -9,12 +12,14 @@
     "pages/travel/travel",
     "pages/good/good",
     "pages/dinner/dinner",
-    "pages/pay/pay",
-    "pages/talkingroom/talkingroom"
+    "pages/talkingroom/talkingroom",
+    "pages/remark/remark",
+    "pages/orderlist/orderlist",
+    "pages/receipt/receipt"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#ffd700",
+    "navigationBarBackgroundColor": "#ffbc21",
     "navigationBarTitleText": "欢乐住",
     "navigationBarTextStyle": "#fff"
   }

@@ -12,24 +12,28 @@
 <!--便利店主要内容  -->
 <view class="shop-body">
   <scroll-view class="shop-body-left"  scroll-y="true">
-    <view class="shop-type {{currentType == index ? 'selected' : ''}}" wx:for="{{shop}}" bindtap="selectType" data-idx="{{index}}">{{item.type}}</view>
+    <view class="shop-type {{currentType == index ? 'selected' : ''}}" wx:for="{{shopType}}" bindtap="selectType" data-idx="{{index}}">{{item.store_level_name}}</view>
   </scroll-view>
   <scroll-view class="shop-body-right" scroll-y="true">
-    <text class="shop-body-title">{{shop[currentType].type}}</text>
+    <text class="shop-body-title">{{shopType[currentType].store_level_name}}</text>
     <view class="shop-body-group">
-      <view wx:for="{{shop[currentType].goods}}" wx:key="{{index}}" class="shop-good" wx:if="{{item.num > 0}}">
+      <view wx:for="{{currentShop}}" wx:key="{{index}}" class="shop-good" wx:if="{{item.goods_number > 0}}">
         <view class="good-pic-container">
-          <image src="{{item.pic}}" class="good-pic" mode="aspectFit" bindtap="preView" data-src="{{item.pic}}"></image>
+          <image src="{{item.goods_img}}" class="good-pic" mode="aspectFit" bindtap="preView" data-src="{{item.goods_img}}"></image>
         </view>
         <view class="shop-good-detail">
-          <text class="shop-good-title">{{item.name}}</text>
-          <text>规格：{{item.size}}</text>
-          <text>剩余：{{item.num}}</text>
-          <text class="shop-good-price">￥ {{item.price}}</text>
+          <text class="shop-good-title">{{item.goods_name}}</text>
+          <text>规格：{{item.goods_spec}}</text>
+          <text>剩余：{{item.goods_number}}</text>
+          <text class="shop-good-price">￥ {{item.goods_price}}</text>
           <view class="shop-buy-num">
-            <view class="good-sub" bindtap="subGood" data-idx="{{item.good_id}}" wx:if="{{item.buy > 0}}">-</view>
+            <view class="good-sub" bindtap="subGood" data-idx="{{item.id}}" wx:if="{{item.buy > 0}}">
+              <image src="../../images/sub.png" mode="aspectFit"></image>
+            </view>
             <view  wx:if="{{item.buy > 0}}">{{item.buy}}</view>
-            <view class="good-add" bindtap="addGood" data-idx="{{item.good_id}}">+</view>
+            <view class="good-add" bindtap="addGood" data-idx="{{item.id}}">
+              <image src="../../images/add.png"></image>
+            </view>
           </view>
         </view>
       </view>
@@ -43,7 +47,7 @@
   <view class="note" wx:if="{{note != 0}}">{{note}}</view>
   <view class="bill">
     <text class="money">￥ {{total}}</text>
-    <text>当前金额</text>
+    <text>当前总额</text>
   </view>
   <view class="shopping-btn" bindtap="pay">{{showCar ? '立即结算' : '确认购买'}}</view>
 </view>
@@ -53,16 +57,16 @@
 <view class="mask" wx:if="{{goods.length !== 0}}" hidden="{{showCar}}" bindtap="closeCar"></view>
 <view class="shop-car" wx:if="{{goods.length !== 0}}" hidden="{{showCar}}">
   <view class="title">我的购物车</view>
-  <view wx:for="{{goods}}" wx:key="{{index}}" class="shop-car-item" wx:if="{{item.num > 0}}">
+  <view wx:for="{{goods}}" wx:key="{{index}}" class="shop-car-item" wx:if="{{item.goods_number > 0}}">
     <view class="item-left">
-      <text>{{item.name}}</text>
-      <text>规格：{{item.size}}</text>
+      <text>{{item.goods_name}}</text>
+      <text>规格：{{item.goods_spec}}</text>
     </view>
-    <view class="item-middle">￥{{item.price}}</view>
+    <view class="item-middle">￥{{item.goods_price}}</view>
     <view class="item-right">
-      <view bindtap="subGood" data-idx="{{item.good_id}}">-</view>
-      <view>{{item.num}}</view>
-      <view bindtap="addGood" data-idx="{{item.good_id}}">+</view>
+      <view bindtap="subGood" data-idx="{{item.id}}">-</view>
+      <view>{{item.goods_number}}</view>
+      <view bindtap="addGood" data-idx="{{item.id}}">+</view>
     </view>
   </view>
 </view>

@@ -3,26 +3,37 @@
 <!--支付标题  -->
 <view class="pay-header">
   <text>待支付</text>
-  <text>订单将配送至{{hotel.room}}</text>
+  <text>订单将配送至{{hotel.room.room_number}}</text>
 </view>
 
 <!--购物车内容  -->
 <view class="shop-car">
-  <view class="shop-car-title">购物车</view>
+  <view class="shop-car-title">{{mode === 1? '便利店' : '送餐服务'}}</view>
   <view wx:for="{{goods}}" class="item">
     <view class="item-left">
-      <text>{{item.name}}</text>
-      <text>规格：{{item.size}}</text>
+      <text>{{item.goods_name}}</text>
+      <text>规格：{{item.goods_spec}}</text>
     </view>
-    <view class="item-right">￥{{item.price * item.num}}</view>
+    <view class="item-right">￥{{item.goods_price * item.goods_number}}</view>
   </view>
 </view>
 
+<!--用餐人数  -->
+<view class="person-num" wx:if="{{mode === 2}}">
+    <label>用餐人数<span class="require">（必填）</span></label>
+    <view  bindtap="showModal">
+      {{num === 0 ? '请选择' : num}}
+    </view>
+    <view class="arrow-down"></view>
+</view>
+
 <!--订单备注  -->
-<view class="remark">
+<view class="remark" bindtap="remark">
   <view>订单备注</view>
-  <view>
-    口味、偏好等
+  <view class="remark-text">
+    <view>
+      {{remark === '' ? '口味、偏好等' : remark}}
+    </view>
     <view class="arrow"></view>
   </view>
 </view>
@@ -40,4 +51,18 @@
 <view class="pay-footer">
   <view class="pay-price">￥{{total}}</view>
   <view class="pay-btn" bindtap="payMoney">立即支付</view>
+</view>
+
+<!--弹出窗模块  -->
+<view class="mask" hidden="{{isShowModal}}" bindtap="closeModal"></view>
+<view hidden="{{isShowModal}}" class="person-modal">
+  <view class="person-modal-control">
+    <view bindtap="closeModal" class="cancel">取消</view>
+    <view bindtap="submitType" class="comfirm">确定</view>
+  </view>
+  <picker-view class="person-type" indicator-class="person-type-border" bindchange="changeType">
+    <picker-view-column>
+      <view wx:for="{{person_num}}" class="person-type-option"  value="{{value}}">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
 </view>

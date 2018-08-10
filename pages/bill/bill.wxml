@@ -3,33 +3,37 @@
 <view  class="bill-title">发票</view>
 <form class="bill-info">
   <view class="bill-item">
-    <label>发票类型</label>
-    <view  bindtap="showModal">{{array[type]}}</view>
+    <label>
+      发票类型   
+    </label>
+    <view  bindtap="showModal">{{array[receipt_type]}}</view>
   </view>
   <view class="bill-item">
     <label>
       开票金额
-      <text class="required">*</text>
     </label>
-    <input placeholder="可不填（请填数字）"></input>
+    <input placeholder="可不填（请填数字）" bindinput="inputReceiptPrice" value="{{receipt_price}}"></input>
   </view>
-  <view class="bill-item">
+  <view class="bill-item" >
     <label>
       发票抬头
       <text class="required">*</text>
     </label>
-    <input placeholder="请输入单位名称" required></input>
+    <input placeholder="请输入单位名称"  value="{{receipt_title}}" bindinput="inputReceiptTitle" required></input>
   </view>
   <view class="bill-item">
-    <label>税号</label>
-    <input  placeholder="请输入纳税人识别号"></input>
+    <label>
+      税号
+      <text class="required">*</text>
+    </label>
+    <input  placeholder="请输入纳税人识别号"  value="{{receipt_number}}" bindblur="inputReceiptNumber" required></input>
   </view>
   <view class="bill-item">
     <label>备注</label>
-    <input placeholder="请输入备注"></input>
+    <input placeholder="请输入备注" value="{{receipt_remark}}"  bindinput="inputReceiptRemark" ></input>
   </view>
 
-  <view class="bill-btn">预约开票</view>
+  <view class="bill-btn" bindtap="submitBill">预约开票</view>
 </form>
 
 <!--发票类型弹出窗模块  -->

@@ -18,7 +18,7 @@ page{
   
   /*Visual  */
   background-color: #ffd700;
-  color: #fff;
+  color: #ffffff;
 }
 
 
@@ -79,7 +79,7 @@ page{
   font-size: 14pt;
 
   /*Visual  */
-  color: #fff;
+  color: #ffffff;
   background-color: #32cd32; 
 }
 
@@ -118,7 +118,7 @@ page{
   border-radius: 80rpx;
 
   /*Visual  */
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 
@@ -148,7 +148,7 @@ page{
   max-height: 200rpx;
 
   /*Visual  */  
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 
@@ -189,7 +189,7 @@ page{
   border-radius: 80rpx;
 
   /*Visual  */
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 
@@ -206,7 +206,7 @@ page{
   word-break: break-all;
 
   /*Visual  */
-  background-color: #fff;  
+  background-color: #ffffff;  
 }
 
 
@@ -219,7 +219,7 @@ page{
   max-height: 200rpx;
 
   /*Visual  */
-  background-color: #fff;  
+  background-color: #ffffff;  
 }
 
 
@@ -229,7 +229,7 @@ page{
   /*Box model  */
   border: 10rpx;
   border-style: solid;
-  border-color: transparent #fff transparent transparent;
+  border-color: transparent #ffffff transparent transparent;
   height: 0;
   width: 0;
 

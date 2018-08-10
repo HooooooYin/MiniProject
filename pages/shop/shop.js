@@ -1,4 +1,6 @@
 // pages/shop/shop.js
+var util = require('../../utils/util.js')
+
 let app = getApp();
 
 Page({
@@ -7,158 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shop:[
-      {
-        type: '热销榜',
-        goods:[
-          {
-            name: '矿泉水',
-            size: '600ml/瓶',
-            num: 999,
-            pic: '../../images/water.png',
-            price:2,
-            good_id: 4,
-            buy: 0
-          },
-          {
-            name: '矿泉水',
-            size: '600ml/瓶',
-            num: 999,
-            pic: '../../images/water.png',
-            price: 2,
-            good_id: 4,
-            buy: 0
-          },
-          {
-            name: '矿泉水',
-            size: '600ml/瓶',
-            num: 999,
-            pic: '../../images/water.png',
-            price: 2,
-            good_id: 4,
-            buy: 0
-          },
-          {
-            name: '矿泉水',
-            size: '600ml/瓶',
-            num: 999,
-            pic: '../../images/water.png',
-            price: 2,
-            good_id: 4,
-            buy: 0
-          },
-          {
-            name: '矿泉水',
-            size: '600ml/瓶',
-            num: 999,
-            pic: '../../images/water.png',
-            price: 2,
-            good_id: 4,
-            buy: 0
-          }
-        ]
-      },
-      {
-        type: '小商品',
-        goods: [
-          {
-            name: '可口可乐',
-            size: '300ml/瓶',
-            num: 999,
-            pic: '../../images/cola.png',
-            price: 3,
-            good_id: 2,
-            buy: 0
-          },
-          {
-            name: '可口可乐',
-            size: '300ml/瓶',
-            num: 999,
-            pic: '../../images/cola.png',
-            price: 3,
-            good_id: 2,
-            buy: 0
-          },
-          {
-            name: '可口可乐',
-            size: '300ml/瓶',
-            num: 999,
-            pic: '../../images/cola.png',
-            price: 3,
-            good_id: 2,
-            buy: 0
-          },
-          {
-            name: '可口可乐',
-            size: '300ml/瓶',
-            num: 999,
-            pic: '../../images/cola.png',
-            price: 3,
-            good_id: 2,
-            buy: 0
-          },
-          {
-            name: '可口可乐',
-            size: '300ml/瓶',
-            num: 999,
-            pic: '../../images/cola.png',
-            price: 3,
-            good_id: 2,
-            buy: 0
-          }
-        ]
-      },
-      {
-        type: '景区门票',
-        goods: [
-          {
-            name: '红牛',
-            size: '400ml/瓶',
-            num: 999,
-            pic: '../../images/rebbull.png',
-            price: 5,
-            good_id: 3,
-            buy: 0
-          },
-          {
-            name: '红牛',
-            size: '400ml/瓶',
-            num: 999,
-            pic: '../../images/rebbull.png',
-            price: 5,
-            good_id: 3,
-            buy: 0
-          },
-          {
-            name: '红牛',
-            size: '400ml/瓶',
-            num: 999,
-            pic: '../../images/rebbull.png',
-            price: 5,
-            good_id: 3,
-            buy: 0
-          },
-          {
-            name: '红牛',
-            size: '400ml/瓶',
-            num: 999,
-            pic: '../../images/rebbull.png',
-            price: 5,
-            good_id: 3,
-            buy: 0
-          },
-          {
-            name: '红牛',
-            size: '400ml/瓶',
-            num: 999,
-            pic: '../../images/rebbull.png',
-            price: 5,
-            good_id: 3,
-            buy: 0
-          }
-        ]
-      }
-    ],
+    shopType: [],          //栏目数组
+    currentShop: null,          //当前栏目的商品
     currentType: 0,   //当前选择的商品类
     goods: [],          //购物车的信息
     note: 0,                //购物车的商品数量
@@ -166,7 +18,32 @@ Page({
     total: 0             //商品总价
   },
   onLoad: function(){
-    this.setData({
+    let that = this
+    var tmp
+    var temp = []
+    util.getType(0).then(function(res){
+      if(res.data.status.errCode === 0){
+        that.setData({
+          shopType: res.data.data
+        })
+        util.getGoods(that.data.shopType[that.data.currentType].id).then(function(res){
+          for (let i = 0; i < res.data.data.length; i++) {
+            tmp = Object.assign({}, res.data.data[i], { buy: 0 })
+            for (let j = 0; j < that.data.goods.length; j++) {
+              if (that.data.goods[j].id === tmp.id) {
+                tmp.buy = that.data.goods[j].goods_number
+              }
+            }
+            temp.p
+            temp.push(tmp)
+          }
+          that.setData({
+            currentShop: temp
+          })
+        })
+      }
+    })
+    that.setData({
       goods: app.globalData.shopCar,
       note: app.globalData.note,
       total: app.globalData.total
@@ -177,8 +54,26 @@ Page({
   //  e,点击事件
   // 返回值： 无
   selectType: function(e){
-    this.setData({
+    var that = this
+    var tmp
+    var temp = []
+    that.setData({
       currentType: e.currentTarget.dataset.idx
+    })
+    util.getGoods(that.data.shopType[that.data.currentType].id).then(function (res) {
+      for (let i = 0; i < res.data.data.length;i++){
+        tmp = Object.assign({}, res.data.data[i], {buy: 0})
+        for (let j = 0; j < that.data.goods.length; j++) {
+          if (that.data.goods[j].id === tmp.id) {
+            tmp.buy = that.data.goods[j].goods_number
+          }
+        }
+        temp.p
+        temp.push(tmp)
+      }
+      that.setData({
+        currentShop: temp
+      })
     })
   },
   // 该函数把商品添加到购物车，此处this指向本页面
@@ -186,19 +81,19 @@ Page({
   //  e，点击事件
   // 返回值：无
   addGood: function (e) {   
-    for (let i = 0; i < this.data.shop[this.data.currentType].goods.length; i++) {
-      if (this.data.shop[this.data.currentType].goods[i].good_id === e.currentTarget.dataset.idx) {
-        let shop = this.data.shop;
-        shop[this.data.currentType].goods[i].buy++
+    for (let i = 0; i < this.data.currentShop.length; i++) {
+      if (this.data.currentShop[i].id === e.currentTarget.dataset.idx) {
+        let goods = this.data.currentShop;
+        goods[i].buy++
         this.setData({
-          shop: shop
+          currentShop: goods
         })
         break;
       }
     }
     for (let i = 0; i < app.globalData.shopCar.length;i++){  //查找购物车里面是否有对应的商品
-      if (app.globalData.shopCar[i].good_id === e.currentTarget.dataset.idx){   //有就购物数量+1
-        app.globalData.shopCar[i].num++;
+      if (app.globalData.shopCar[i].id === e.currentTarget.dataset.idx){   //有就购物数量+1
+        app.globalData.shopCar[i].goods_number++;
         app.globalData.note++;
         app.sumMoney();
         this.setData({
@@ -209,14 +104,15 @@ Page({
         return;
       }
     }
-    for (let i = 0; i < this.data.shop[this.data.currentType].goods.length; i++){  //没有则新建一个购物车条目
-      if (this.data.shop[this.data.currentType].goods[i].good_id === e.currentTarget.dataset.idx){
+    for (let i = 0; i < this.data.currentShop.length; i++){  //没有则新建一个购物车条目
+      if (this.data.currentShop[i].id === e.currentTarget.dataset.idx){
         let good = {
-          name: this.data.shop[this.data.currentType].goods[i].name,
-          size: this.data.shop[this.data.currentType].goods[i].size,
-          price: this.data.shop[this.data.currentType].goods[i].price,
-          good_id: this.data.shop[this.data.currentType].goods[i].good_id,
-          num: 1
+          goods_name: this.data.currentShop[i].goods_name,
+          goods_spec: this.data.currentShop[i].goods_spec,
+          goods_price: this.data.currentShop[i].goods_price,
+          id: this.data.currentShop[i].id,
+          goods_number: 1,
+          kind: 1
         };
         app.globalData.shopCar.push(good);
         app.globalData.note++;
@@ -235,25 +131,22 @@ Page({
   //  e,点击事件
   // 返回值： 无
   subGood: function (e) {
-    for (let i = 0; i < this.data.shop[this.data.currentType].goods.length; i++) {
-      if (this.data.shop[this.data.currentType].goods[i].good_id === e.currentTarget.dataset.idx) {
-        let shop = this.data.shop;
-        shop[this.data.currentType].goods[i].buy--
+    for (let i = 0; i < this.data.currentShop.length; i++) {
+      if (this.data.currentShop[i].id === e.currentTarget.dataset.idx) {
+        let goods = this.data.currentShop;
+        goods[i].buy--
         this.setData({
-          shop: shop
+          currentShop: goods
         })
         break;
       }
     }
     for (let i = 0; i < app.globalData.shopCar.length; i++) {  //查找购物车里面是否有对应的商品
-      if (app.globalData.shopCar[i].good_id === e.currentTarget.dataset.idx) {   //有就购物数量-1
-        app.globalData.shopCar[i].num--;
+      if (app.globalData.shopCar[i].id === e.currentTarget.dataset.idx) {   //有就购物数量-1
+        app.globalData.shopCar[i].goods_number--;
         app.globalData.note--;
-        if (app.globalData.shopCar[i].num === 0) {
+        if (app.globalData.shopCar[i].goods_number === 0) {
           app.globalData.shopCar.splice(i, 1);
-          this.setData({
-            showCar: true
-          });
         }
         app.sumMoney();
         this.setData({
@@ -261,6 +154,11 @@ Page({
           goods: app.globalData.shopCar,
           total: app.globalData.total
         });
+        if(this.data.note === 0){
+          this.setData({
+            showCar: true
+          })
+        }
         return;
       }
     }
@@ -273,7 +171,6 @@ Page({
     this.setData({
       showCar: !this.data.showCar
     })
-    console.log(this.data.goods)
   },
   // 点击遮罩层关闭购物车，此处this指向本页面
   // 参数：无
@@ -297,21 +194,52 @@ Page({
   // 参数： 无
   // 返回值: 无
   pay: function(){
+    let key = false, temp = app.globalData.shopCar[0].kind;
+    let goods_info = [];
     if(this.data.goods.length === 0) wx.showToast({
       title: '请先选择商品',
       icon: 'none'
     })
     else{
+      app.globalData.remark = '';
+      for (let i = 1; i < app.globalData.shopCar.length; i++) {
+        if (app.globalData.shopCar[i].kind !== temp) {
+          key = true;
+        }
+      }
       if(this.data.showCar === true){
         this.setData({
           showCar: false
         });
-      }else{
+      } else if (key) {
         this.setData({
           showCar: true
         })
         wx.navigateTo({
-          url: '../pay/pay',
+          url: '../orderlist/orderlist',
+        })
+      } else{
+        this.setData({
+          showCar: true
+        })
+        for(let i = 0;i < this.data.goods.length;i++){
+          goods_info.push({
+            // goods_name: this.data.goods[i].goods_name,
+            // goods_price: this.data.goods[i].goods_price,
+            id: this.data.goods[i].id,
+            // goods_spec: this.data.goods[i].goods_spec,
+            goods_number: this.data.goods[i].goods_number
+          })
+        }
+        if (temp === 1) {
+          app.globalData.shop_car = app.globalData.shopCar
+        } else {
+          app.globalData.dinner_car = app.globalData.shopCar
+        }
+        util.createOrder(temp, goods_info, this.data.total, null, null).then(function(res){
+          wx.navigateTo({
+            url: `../pay/pay?id=${res.data.data.id}&&kind=${temp}`,
+          })
         })
       }
     }

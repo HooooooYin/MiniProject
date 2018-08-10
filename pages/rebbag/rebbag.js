@@ -1,21 +1,21 @@
 // pages/rebbag/rebbag.js
+var util = require('../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-     notices:[       //通知信息         
-      {
-        title: '网上好评 退房送红包',
-        text: '在携程、去哪儿、飞猪网站下单的用户，带图写好评，在退房时可以凭好评领取5元现金红包'
-      },
-      {
-        title: '本店新会员送福利啦',
-        text: '凡是本店会员并且消费满5000元，赠送上海迪士尼套票一张'
-      }
-    ]
+     notices:[]      //通知信息         
   },
+  onLoad: function(){
+    var that = this
+    util.getWelfares().then(function(res){
+      that.setData({
+        notices: res.data.data
+      })
+    })
+  }
 
   
 })

@@ -1,0 +1,32 @@
+<!--pages/orderlist/orderlist.wxml-->
+<!--pages/pay/pay.wxml-->
+
+<!--支付标题  -->
+<view class="pay-header">
+  <text>待支付</text>
+  <text>订单将配送至{{hotel.room.room_number}}</text>
+</view>
+
+<view class="order">
+  <view class="order-left">
+    <text class="order-title">便利店</text>
+    <text class="order-detail">{{shop_car[0].goods_name}}<block wx:if="{{shop_num > 1}}">等</block>{{shop_num}}件商品</text>
+  </view>
+  <view class="order-right">
+    <text>等待支付</text>
+    <text class="order-price">{{shop_price}}</text>
+    <view bindtap="pay" data-idx="1">去支付</view>
+  </view>
+</view>
+
+<view class="order">
+  <view class="order-left">
+    <text class="order-title">送餐服务</text>
+    <text class="order-detail">{{dinner_car[0].goods_name}}<block wx:if="{{dinner_num > 1}}">等</block>{{dinner_num}}件商品</text>
+  </view>
+  <view class="order-right">
+    <text>等待支付</text>
+    <text class="order-price">{{dinner_price}}</text>
+    <view bindtap="pay" data-idx="2">去支付</view>
+  </view>
+</view>

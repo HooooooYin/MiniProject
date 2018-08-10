@@ -22,7 +22,7 @@ page{
   justify-content: center;
 
   /*Visual  */
-  color: #fff;
+  color: #ffffff;
   background-color: #ff8c00;
 }
 
@@ -49,7 +49,8 @@ page{
 /*头部标题  */
 .shop-header-title{
   /*Typographic  */
-  font-size: 18pt;
+  font-size:16pt;
+  margin-bottom:15rpx;
 }
 
 
@@ -91,6 +92,7 @@ page{
   /*Typographic  */
   text-align: center;
   line-height: 100rpx;
+  font-size: 10pt;
 }
 
 
@@ -115,7 +117,7 @@ page{
   height: 100%;
 
   /*Visual  */
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 
@@ -195,16 +197,21 @@ page{
 
   /*Typographic  */
   flex-direction: column;
-  font-size: 10pt;
+  font-size: 8pt;
 
   /*Visual  */
-  color: #a9a9a9;
+  color: #929292;
+}
+
+.shop-good-detail text{
+  margin-bottom: 5rpx;
 }
 
 /*商品题目  */
 .shop-good-title{
   /*Typographic  */
   font-size: 12pt;
+  margin-bottom:10rpx;
   
   /*Visual  */
   color: #000;
@@ -260,13 +267,15 @@ page{
   margin-right: 20rpx;
 
   /*Typographic  */
-  font-weight: 700;
-  line-height: 40rpx;
   text-align: center;
-  font-size: 18pt;
   
-  /*Visual  */
-  color: #808080;
+}
+
+.good-sub image{
+  /*Box model  */
+  width:70%;
+  height:70%;
+
 }
 
 
@@ -275,17 +284,21 @@ page{
 .good-add{
   /*Box model */
   border: 1px solid #ff8c00;
-  height: 36rpx;
-  width: 34rpx;
+  height: 40rpx;
+  width: 40rpx;
   border-radius: 40rpx;
   margin-left: 20rpx;
   /*Typographic */
-  line-height: 40rpx;
   text-align: center; 
-  font-size: 18pt;
   /*Visual */
   background-color: #ff8c00;
-  color: #fff;
+}
+
+/*加号的图片  */
+.good-add image{
+  /*Box model  */
+  height: 70%;
+  width: 70%;
 }
 
 
@@ -297,6 +310,7 @@ page{
   position: relative;
 
   /*Box model  */
+  height:120rpx;
   display: flex;
   flex-direction: row;
 
@@ -322,7 +336,7 @@ page{
   line-height:30rpx;
 
   /*Visual  */
-  color:#fff;
+  color:#ffffff;
   background-color:#ff4500;  
 }
 
@@ -331,14 +345,14 @@ page{
 /*购物车图标  */
 .shopping-icon{
   /*Box model  */
-  width: 100rpx;
-  height: 100rpx;
+  width: 50rpx;
+  height: 50rpx;
   padding: 30rpx;
   border-radius: 50%;
 
   /*Visual  */
   background-color: #ffa500;
-  transform: translate(20rpx, -60rpx);
+  transform: translate(20rpx, -40rpx);
 }
 
 
@@ -357,18 +371,22 @@ page{
 /*总价说明  */
 .bill text{
   /*Typographic  */
-  font-size: 10pt;
+  font-size: 8pt;
 
   /*Visual  */
-  color: #fff;
+  color: #ffffff;
 }
 
 
 
 /*金额  */
 .bill .money{
+  /*Box model  */
+  padding-top:10rpx;
+
+
   /*Typographic  */
-  font-size: 18pt;
+  font-size: 12pt;
 
   /*Visual  */
   color: #ff8c00;
@@ -384,12 +402,13 @@ page{
 
   /*Typographic  */
   text-align: center; 
-  font-size: 14pt;
+  font-size: 10pt;
   justify-content: center;
   align-items: center;
 
   /*Visual  */
   background-color: #ff4500;
+  color: #ffffff;
 }
 
 
@@ -417,7 +436,7 @@ page{
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 114rpx;
+  bottom: 95rpx;
 
   /*Box model  */
   padding-bottom: 50rpx;
@@ -427,7 +446,7 @@ page{
   flex-direction: column;
   
   /*Visual  */
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 /*购物车标题  */
@@ -456,7 +475,7 @@ page{
   flex-direction: row;
 
   /*Visual  */
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 /*购物车条目左边部分  */
@@ -543,6 +562,6 @@ page{
   font-size: 16pt;
 
   /*Visual  */
-  color: #fff;
+  color: #ffffff;
   background-color: #ffd700;
 }

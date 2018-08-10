@@ -1,11 +1,14 @@
 <!--index.wxml-->
-
 <!--首页头部（标题、轮播图以及广告）  -->
-<view class="title">{{hotel.name}}  {{hotel.room}}</view>
+<view class="title">{{hotel.name}}  {{hotel.room.room_number}}</view>
 <index-slider slider="{{slider}}" />
 <view class="ad" hidden="{{isShowAd}}">
-  公告：欢迎入住{{hotel.name}}，祝您入住愉快
-  <icon type="cancel" class="ad-icon" color="#f4a460" bindtap="closeAd"></icon>
+  <view>
+    公告：欢迎入住{{hotel.name}}，祝您入住愉快
+  </view>
+  <view bindtap="closeAd" class="ad-icon">
+    <image src="../../images/close.png" mode="aspectFit"></image>
+  </view>
 </view>
 
 
@@ -87,8 +90,8 @@
         <text>宾客您好！我是本店经理，住店过程中遇到任何问题，都可以反馈给我，我会帮您解决，希望您住店愉快！</text>
       </view>
       <view class="tab-group">
-        <block wx:for="{{complain_tabs}}" wx:key="{{index}}" >
-          <view class="tab {{item.selected ? 'selected' : ''}}" data-idx="{{index}}" bindtap="selectComplain">{{item.text}}</view>
+        <block wx:for="{{tabs}}" wx:key="{{index}}" >
+          <view class="tab {{item.selected ? 'selected' : ''}}" data-idx="{{index}}" bindtap="selectComplain">{{item.complaint_name}}</view>
         </block>
       </view>
       <textarea class="suggestion" placeholder="请简单描述问题，也可留下您的手机，以便于我们帮您解决" bindinput="inputText"></textarea>
@@ -99,23 +102,23 @@
     <view class="wifi">
       <view class="wifi-left">
         <text>WIFI</text>
-        <view class="room-wifi">{{hotel.room}}</view>
+        <view class="room-wifi">{{hotel.room.room_number}}</view>
       </view>
       <view class="wifi-right" bindtap="connectWifi">一键连WIFI</view>
     </view>
   </view>
   <view class="service-detail" hidden="{{serviceType != '3'}}">
     <view class="tab-group">
-      <block wx:for="{{rent_tabs}}" wx:key="{{index}}">
-        <view class="tab {{item.selected ? 'selected' : ''}}" data-idx="{{index}}" bindtap="selectRent">{{item.text}}</view>
+      <block wx:for="{{tabs}}" wx:key="{{index}}">
+        <view class="tab {{item.selected ? 'selected' : ''}}" data-idx="{{index}}" bindtap="selectRent">{{item.sundrie_name}}</view>
       </block>
       <view class="submit-btn" bindtap="submitRent">立即提交</view>
     </view>
   </view>
   <view class="service-detail" hidden="{{serviceType != '4'}}">
     <view class="tab-group">
-      <block wx:for="{{clean_tabs}}" wx:key="{{index}}">
-        <view class="tab {{clean_selected == index ? 'selected' : ''}}" bindtap="selectClean" data-idx="{{index}}">{{item}}</view>
+      <block wx:for="{{tabs}}" wx:key="{{index}}">
+        <view class="tab {{clean_selected == index ? 'selected' : ''}}" bindtap="selectClean" data-idx="{{index}}">{{item.clean_name}}</view>
       </block>
       <view class="submit-btn" bindtap="cleanRoom">立即提交</view>
     </view>
@@ -126,35 +129,113 @@
 <view class="hot-sell">
   <text class="hot-sell-title">精品热卖</text>
   <view class="hot-sell-group">
-    <navigator class="hot-sell-item" wx:for="{{hot_sell}}" wx:key="{{index}}" url="../good/good">
-      <image class="hot-sell-pic" src="{{item.pic}}"></image>
-      <text class="hot-sell-name">{{item.name}}</text>
-      <text class="hot-sell-price">￥{{item.price}}</text>
-    </navigator>
+    <view class="hot-sell-item" wx:for="{{hot_sell}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="jumpTo">
+      <image class="hot-sell-pic" src="{{item.goods_img}}"></image>
+      <text class="hot-sell-name">{{item.goods_name}}</text>
+      <text class="hot-sell-price">￥{{item.goods_price}}</text>
+    </view>
   </view>
 </view>
 
+<!--订单信息   -->
+<block wx:for="{{notices}}" wx:key="{{index}}"> 
+  <block wx:if="{{item.pay_status_explain !== null}}">
+    <view class="notice-item" bindtap="toPay" data-id="{{item.id}}">
+      <view class="notice-title">
+        <view class="notice-title-text">
+          <view class="notice-title-line"></view>
+          {{item.order_type_explain}}
+          </view>
+          <view class="notice-time">
+            {{item.updated_at}}
+          </view>
+        </view>
+        <view class="notice-text">
+          消费金额：￥{{item.order_price}}
+          <view class="arrow"></view>
+          <view wx:if="{{item.order_status === 1}}" class="notice_status1">
+            <image src="../../images/waiting.png"></image>
+            {{item.pay_status_explain}}
+          </view>
+            <view wx:elif="{{item.order_status === 2}}" class="notice_status2">
+            <image src="../../images/dealing.png"></image>
+            {{item.order_status_explain}}
+          </view>  
+          <view wx:elif="{{item.order_status === 3}}" class="notice_status3">
+            <image src="../../images/finish.png"></image>
+            {{item.pay_status_explain}}
+          </view>
+        </view>
+      </view>
+    </block>
+  <block wx:elif="{{item.order_type === 4}}">
+    <view class="notice-item" bindtap="toReceipt" data-id="{{item.service_info.id}}">
+      <view class="notice-title">
+        <view class="notice-title-text">
+          <view class="notice-title-line"></view>
+          {{item.order_type_explain}}
+        </view>
+        <view class="notice-time">
+          {{item.updated_at}}
+        </view>
+      </view>
+      <view class="notice-text">
+        预约开票服务
+        <view class="arrow"></view>
+        <view wx:if="{{item.order_status === 1}}" class="notice_status1">
+          <image src="../../images/waiting.png"></image>
+          {{item.order_status_explain}}
+        </view>
+          <view wx:elif="{{item.order_status === 2}}" class="notice_status2">
+          <image src="../../images/dealing.png"></image>
+          {{item.order_status_explain}}
+        </view>  
+        <view wx:elif="{{item.order_status === 3}}" class="notice_status3">
+          <image src="../../images/finish.png"></image>
+          {{item.order_status_explain}}
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="notice-item">
+        <view class="notice-title">
+          <view class="notice-title-text">
+            <view class="notice-title-line"></view>
+              {{item.order_type_explain}}
+            </view>
+            <view class="notice-time">
+              {{item.updated_at}}
+            </view>
+          </view>
+        <view class="notice-text">
+          {{item.service_info}}
+          <view wx:if="{{item.order_status === 1}}" class="notice_status1">
+            <image src="../../images/waiting.png"></image>
+            待受理
+          </view>
+          <view wx:elif="{{item.order_status === 2}}" class="notice_status2">
+            <image src="../../images/dealing.png"></image>
+            处理中
+          </view>
+          <view wx:elif="{{item.order_status === 3}}" class="notice_status3">
+            <image src="../../images/finish.png"></image>
+            已完成
+          </view>
+        </view>
+      </view>
+    </block> 
+  </block>
+
 <!--服务通知模块  -->
-<block wx:for="{{notices}}" wx:key="{{index}}">
+<block wx:for="{{hotel.services}}" wx:key="{{index}}">
   <view class="notice-item">
-    <view class="notice-title">
+    <view class="notices-title">
       <view class="notice-title-line"></view>
       {{item.title}}
     </view>
     <view class="notice-text">
-      {{item.text}}
-      <view wx:if="{{item.status == 1}}" class="notice_status1">
-        <image src="../../images/waiting.png"></image>
-        待受理
-      </view>
-      <view wx:elif="{{item.status == 2}}" class="notice_status2">
-        <image src="../../images/dealing.png"></image>
-        处理中
-      </view>
-      <view wx:elif="{{item.status == 3}}" class="notice_status3">
-        <image src="../../images/finish.png"></image>
-        已完成
-      </view>
+      {{item.content}}
     </view>
   </view>
 </block>

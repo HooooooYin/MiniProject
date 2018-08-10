@@ -1,0 +1,11 @@
+<!--pages/scanning/scanning.wxml-->
+<view class="title">
+  <view><image mode="aspectFit" src="../../images/title.png"></image></view>
+  <view><image mode="aspectFit" src="../../images/title-child.png"></image></view>
+</view>
+<button class="btn" bindtap="scanning">
+  <icon>
+    <image mode="aspectFit" src="../../images/scanning.png"></image>
+  </icon>
+  <text>进入房间</text>
+</button>

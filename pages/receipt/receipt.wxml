@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="title">
+    <text class="title-left">{{room}}房预约开票</text>
+    <text class="title-right">{{receipt.create_at}}</text>
+  </view>
+  <view class="body">
+    <view class="heading">
+      <icon  class="heading-left">
+        <image src="../../images/hourglass.png" mode="aspectFit"></image>
+      </icon>
+      <view class="heading-right">
+        <text>预约开票！</text>
+        <text>退房时可在前台领取发票</text>
+      </view>
+    </view>
+    <view class="body-item">
+      <label class="item-title">发票类型</label>
+      <text class="item-detail">{{receipt_type === 0 ? '增值税普通发票' : '增值税专用发票'}}</text>
+    </view>
+    <view class="body-item">
+      <label class="item-title">发票金额</label>
+      <text class="item-detail" wx:if="{{receipt.receipt_price}}">{{receipt.receipt_price === 0 ? '' : '￥'}}{{receipt.receipt_price}}</text>
+    </view>
+    <view class="body-item">
+      <label class="item-title">发票抬头</label>
+      <text class="item-detail">{{receipt.receipt_title}}</text>
+    </view>
+    <view class="body-item">
+      <label class="item-title">税号</label>
+      <text class="item-detail">{{receipt.receipt_number}}</text>
+    </view>
+    <view class="body-item">
+      <label class="item-title">发票备注</label>
+      <text class="item-detail">{{receipt.receipt_remark ? receipt.receipt_remark : ''}}</text>
+    </view>
+  </view>
+</view>

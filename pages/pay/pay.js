@@ -1,4 +1,6 @@
 // pages/pay/pay.js
+let util = require('../../utils/util.js')
+
 let app = getApp();
 
 Page({
@@ -10,7 +12,13 @@ Page({
     goods:[],        //购物车商品信息
     total: 0,            //总价 
     openId: '',              //用户的openid
-    hotel: null           //酒店信息
+    hotel: null,           //酒店信息
+    mode: 1,                //1为便利店，2为送餐
+    person_num: ['请选择', 1, 2, 3, 4, 5, 6],   //用餐人数选项
+    num: 0,               //选择的用餐人数
+    isShowModal: true,        //选择是否弹出模态框
+    remark: '',
+    id: null
   },
 
   /**
@@ -18,17 +26,66 @@ Page({
    * 先调用wx.login()登录获得code，再请求openid用于之后的支付
    */
   onLoad: function (options) {
-    wx.login({
-      success:  function(res){
-        this.getOpenId(res.code);
-      }
+    var that = this;
+    util.getOrder(app.globalData.user.token, options.id).then(function(res){
+      that.setData({
+        goods: res.data.data.goods_info,
+        id: options.id,
+        total: res.data.data.order_price
+      })
     })
+    that.setData({
+      hotel: app.globalData.hotel,
+      mode: parseInt(options.kind)
+    })
+  },
+  onShow: function () {
     this.setData({
-      total: app.globalData.total,
-      goods: app.globalData.shopCar,
-      hotel: app.globalData.hotel
+      remark: app.globalData.remark
     })
-
+  },
+  // 显示模态框，此处的this指向本页面
+  // 参数： 无
+  // 返回值： 无
+  showModal: function () {
+    this.setData({
+      isShowModal: false
+    })
+  },
+  // 点击取消关闭模态框，此处this指向本页面
+  // 参数：无
+  // 返回值：无
+  closeModal: function () {
+    this.setData({
+      type: 0,
+      isShowModal: true
+    })
+  },
+  // 点击提交选择的用餐人数，此处的this指向本页面
+  // 参数： 无
+  // 返回值： 无
+  submitType: function () {
+    this.setData({
+      isShowModal: true
+    })
+  },
+  // 把picker-view选择的内容保存到num中
+  // 参数:
+  //  e,数据更新事件
+  // 返回值： 无
+  changeType: function (e) {
+    this.setData({
+      num: e.detail.value[0]
+    })
+  },
+  // 跳转备注页面
+  // 参数：无
+  // 返回值： 无
+  remark: function(){
+    var that = this
+    wx.navigateTo({
+      url: `../remark/remark?kind=${that.data.mode}`,
+    })
   },
   // 向后台获取openId,用于付款，此处this指向本页面
   // 参数:
@@ -78,27 +135,7 @@ Page({
   //  param：用于调用接口的参数：timeStamp:时间戳，nonceStr:随机字符串，
   //          package：统一下单接口返回的 prepay_id 参数值，signType:签名算法,payType:支付方式
   // 返回值：无
-  payMoney: function(param){
-    wx.requestPayment({
-      timeStamp: param.timeStamp,
-      nonceStr: param.nonceStr,
-      package: param.package,
-      signType: param.signType,
-      paySign: param.paySign,
-      success: function(res){
-        wx.navigateTo({
-          utl: '../index/index',
-          success: function(res){
-            wx.showToast({
-              title: '支付成功',
-              icon: 'success',
-              duration: 2000
-            })
-          }
-        })
-      }
-    })
+  payMoney: function(){
+    util.getPay(app.globalData.user.token, this.data.id, this.data.remark);
   }
-
-
 })

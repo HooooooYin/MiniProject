@@ -2,4 +2,4 @@
 
 <!--酒店指南详细内容  -->
 <text class="title">{{note.title}}</text>
-<text >{{note.text}}</text>
+<rich-text nodes="{{note.text}}"></rich-text>

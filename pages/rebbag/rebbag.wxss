@@ -4,14 +4,9 @@ page{
   /*Box model */
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  
-  /*Typographic */
-  align-items: center;
   
   /*Visual */
-  background-color: #f6f8f9;
+  background-color: #f3f5f7;
 }
 
 
@@ -34,7 +29,7 @@ page{
   border-radius: 10rpx;
 
   /*Visual  */
-  background-color: #fff;  
+  background-color: #ffffff;  
 }
 
 /*通知标题  */
@@ -49,7 +44,7 @@ page{
   align-items: center;
   
   /*Visual */  
-  color: #808080; 
+  color: #676767; 
 }
 
 
@@ -75,5 +70,5 @@ page{
   font-size: 12pt;
 
   /*Visual  */
-  color: #d3d3d3;
+  color: #929292;
 }
